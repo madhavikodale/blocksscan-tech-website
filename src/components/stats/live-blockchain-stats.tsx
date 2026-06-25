@@ -172,7 +172,7 @@ export function LiveBlockchainStats() {
             </span>
             <button
               onClick={refreshStats}
-              className={`p-1.5 rounded-lg transition-colors hover:bg-white/5 ${isRefreshing ? "animate-spin" : ""}`}
+              className={`p-1.5 rounded-lg transition-colors hover:bg-[var(--glass-bg)] ${isRefreshing ? "animate-spin" : ""}`}
               style={{ color: "var(--text-muted)" }}
             >
               <RefreshCw className="w-3.5 h-3.5" />

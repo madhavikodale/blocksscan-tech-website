@@ -87,6 +87,7 @@ export function AnalyticsDashboard() {
             className="w-10 h-10 rounded-lg flex items-center justify-center"
             style={{ backgroundColor: "var(--badge-bg)" }}
           >
+            {/* @ts-ignore */}
             <Icon className="w-5 h-5" style={{ color: "var(--primary)" }} />
           </div>
           <div
@@ -139,7 +140,7 @@ export function AnalyticsDashboard() {
                 className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-all border ${
                   timeRange === range
                     ? "border-primary/50"
-                    : "border-transparent hover:bg-white/5"
+                    : "border-transparent hover:bg-[var(--glass-bg)]"
                 }`}
                 style={{
                   backgroundColor: timeRange === range ? "var(--badge-bg)" : "transparent",
@@ -150,7 +151,7 @@ export function AnalyticsDashboard() {
               </button>
             ))}
             <button
-              className="p-2 rounded-lg border transition-colors hover:bg-white/5"
+              className="p-2 rounded-lg border transition-colors hover:bg-[var(--glass-bg)]"
               style={{ borderColor: "var(--glass-border)", color: "var(--text-muted)" }}
             >
               <Download className="w-4 h-4" />

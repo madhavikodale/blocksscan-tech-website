@@ -1,6 +1,6 @@
 import { AboutSection } from "@/components/sections/about";
 import { TestimonialsSection } from "@/components/sections/testimonials";
-import { StatsSection } from "@/components/sections/stats";
+import { LiveStatsSection } from "@/components/sections/stats";
 
 export const metadata = {
   title: "About Us | BlocksScan Technology",
@@ -12,15 +12,15 @@ export default function AboutPage() {
     <div className="flex flex-col pt-16">
       <div className="py-20 border-b border-white/[0.08]">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[var(--text-primary)] mb-6">
             About <span className="text-gradient">BlocksScan</span>
           </h1>
-          <p className="text-lg text-slate-400 max-w-2xl mx-auto">
+          <p className="text-lg text-[var(--text-secondary)] max-w-2xl mx-auto">
             We're a team of blockchain enthusiasts, engineers, and visionaries committed to building the decentralized future.
           </p>
         </div>
       </div>
-      <StatsSection />
+      <LiveStatsSection />
       <AboutSection />
       <TestimonialsSection />
     </div>

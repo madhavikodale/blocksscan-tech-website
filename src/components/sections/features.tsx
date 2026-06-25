@@ -268,7 +268,7 @@ export function FeaturesSection() {
           <Link href="/services">
             <Button
               size="lg"
-              className="bg-gradient-primary hover:opacity-90 text-white border-0 px-8 h-12 text-base font-medium group"
+              className="bg-gradient-primary hover:opacity-90 text-[var(--text-primary)] border-0 px-8 h-12 text-base font-medium group"
             >
               Explore All Features
               <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />

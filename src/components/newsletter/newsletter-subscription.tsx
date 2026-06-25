@@ -93,7 +93,7 @@ export function NewsletterSubscription() {
             <Button
               type="submit"
               disabled={status === "loading" || status === "success"}
-              className="h-12 px-6 bg-gradient-primary hover:opacity-90 text-white"
+              className="h-12 px-6 bg-gradient-primary hover:opacity-90 text-[var(--text-primary)]"
             >
               {status === "loading" ? (
                 <Loader2 className="w-4 h-4 animate-spin" />

@@ -145,7 +145,7 @@ export function DemoBooking() {
             </p>
             <Button
               onClick={() => router.push("/")}
-              className="bg-gradient-primary text-white"
+              className="bg-gradient-primary text-[var(--text-primary)]"
             >
               Back to Home
             </Button>
@@ -174,9 +174,9 @@ export function DemoBooking() {
               <div
                 className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold ${
                   step > i + 1
-                    ? "bg-emerald-500 text-white"
+                    ? "bg-emerald-500 text-[var(--text-primary)]"
                     : step === i + 1
-                    ? "bg-gradient-primary text-white"
+                    ? "bg-gradient-primary text-[var(--text-primary)]"
                     : "border"
                 }`}
                 style={
@@ -205,13 +205,13 @@ export function DemoBooking() {
             </CardHeader>
             <CardContent>
               <div className="flex items-center justify-between mb-4">
-                <button onClick={handlePrevMonth} className="p-2 rounded-lg hover:bg-white/5">
+                <button onClick={handlePrevMonth} className="p-2 rounded-lg hover:bg-[var(--glass-bg)]">
                   <ChevronLeft className="w-5 h-5" style={{ color: "var(--text-secondary)" }} />
                 </button>
                 <span className="font-semibold" style={{ color: "var(--text-primary)" }}>
                   {monthNames[currentMonth.getMonth()]} {currentMonth.getFullYear()}
                 </span>
-                <button onClick={handleNextMonth} className="p-2 rounded-lg hover:bg-white/5">
+                <button onClick={handleNextMonth} className="p-2 rounded-lg hover:bg-[var(--glass-bg)]">
                   <ChevronRight className="w-5 h-5" style={{ color: "var(--text-secondary)" }} />
                 </button>
               </div>
@@ -237,10 +237,10 @@ export function DemoBooking() {
                       disabled={isPast}
                       className={`h-10 rounded-lg text-sm font-medium transition-all ${
                         isSelected
-                          ? "bg-gradient-primary text-white"
+                          ? "bg-gradient-primary text-[var(--text-primary)]"
                           : isPast
                           ? "opacity-30 cursor-not-allowed"
-                          : "hover:bg-white/5"
+                          : "hover:bg-[var(--glass-bg)]"
                       }`}
                       style={
                         !isSelected && !isPast
@@ -258,7 +258,7 @@ export function DemoBooking() {
                 <Button
                   onClick={() => selectedDate && setStep(2)}
                   disabled={!selectedDate}
-                  className="bg-gradient-primary text-white"
+                  className="bg-gradient-primary text-[var(--text-primary)]"
                 >
                   Continue
                 </Button>
@@ -294,7 +294,7 @@ export function DemoBooking() {
                       selectedTime === slot.time
                         ? "border-primary/50"
                         : slot.available
-                        ? "hover:bg-white/5"
+                        ? "hover:bg-[var(--glass-bg)]"
                         : "opacity-40 cursor-not-allowed"
                     }`}
                     style={{
@@ -315,7 +315,7 @@ export function DemoBooking() {
                 <Button
                   onClick={() => selectedTime && setStep(3)}
                   disabled={!selectedTime}
-                  className="bg-gradient-primary text-white"
+                  className="bg-gradient-primary text-[var(--text-primary)]"
                 >
                   Continue
                 </Button>
@@ -404,7 +404,7 @@ export function DemoBooking() {
                       key={topic}
                       onClick={() => setForm({ ...form, topic })}
                       className={`px-3 py-1.5 rounded-full text-xs font-medium border transition-all ${
-                        form.topic === topic ? "border-primary/50" : "hover:bg-white/5"
+                        form.topic === topic ? "border-primary/50" : "hover:bg-[var(--glass-bg)]"
                       }`}
                       style={{
                         backgroundColor: form.topic === topic ? "var(--badge-bg)" : "var(--glass-bg)",
@@ -443,7 +443,7 @@ export function DemoBooking() {
                 <Button
                   onClick={handleSubmit}
                   disabled={!form.name || !form.email || !form.topic}
-                  className="bg-gradient-primary text-white"
+                  className="bg-gradient-primary text-[var(--text-primary)]"
                 >
                   Confirm Booking
                 </Button>

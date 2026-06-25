@@ -75,7 +75,7 @@ const statusConfig = {
   open: { icon: AlertCircle, color: "text-amber-400", bg: "bg-amber-400/10", label: "Open" },
   in_progress: { icon: Clock, color: "text-blue-400", bg: "bg-blue-400/10", label: "In Progress" },
   resolved: { icon: CheckCircle, color: "text-emerald-400", bg: "bg-emerald-400/10", label: "Resolved" },
-  closed: { icon: XCircle, color: "text-slate-400", bg: "bg-slate-400/10", label: "Closed" },
+  closed: { icon: XCircle, color: "text-[var(--text-secondary)]", bg: "bg-slate-400/10", label: "Closed" },
 };
 
 const priorityConfig = {
@@ -170,7 +170,7 @@ export function SupportTicketSystem() {
           </div>
           <Button
             onClick={() => setShowCreate(true)}
-            className="bg-gradient-primary hover:opacity-90 text-white"
+            className="bg-gradient-primary hover:opacity-90 text-[var(--text-primary)]"
           >
             <Plus className="w-4 h-4 mr-2" />
             New Ticket
@@ -359,7 +359,7 @@ export function SupportTicketSystem() {
                       color: "var(--text-primary)",
                     }}
                   />
-                  <Button onClick={handleSendMessage} className="bg-gradient-primary text-white">
+                  <Button onClick={handleSendMessage} className="bg-gradient-primary text-[var(--text-primary)]">
                     <MessageSquare className="w-4 h-4" />
                   </Button>
                 </div>
@@ -459,7 +459,7 @@ export function SupportTicketSystem() {
                   <Button
                     onClick={handleCreateTicket}
                     disabled={submitting || !newTicket.title || !newTicket.description}
-                    className="bg-gradient-primary text-white"
+                    className="bg-gradient-primary text-[var(--text-primary)]"
                   >
                     {submitting ? <Loader2 className="w-4 h-4 animate-spin" /> : "Create Ticket"}
                   </Button>

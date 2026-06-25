@@ -1,243 +1,144 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import { Card, CardContent } from "@/components/ui/card";
+import { motion } from "framer-motion";
+import Link from "next/link";
 import {
   Blocks,
   FileCode,
-  Layout,
-  Plug,
+  Globe,
   Server,
-  Lightbulb,
+  Shield,
+  BarChart3,
   ArrowRight,
-  Sparkles,
 } from "lucide-react";
-import Link from "next/link";
 
 const services = [
   {
     icon: Blocks,
     title: "Blockchain Development",
     description:
-      "End-to-end blockchain solutions using Ethereum, Polygon, BSC, and other leading networks. Custom chain development and protocol engineering.",
-    features: ["Layer 1 & Layer 2", "Custom Protocols", "Cross-chain Bridges"],
-    color: "blue",
-    gradient: "from-blue-500/20 to-cyan-500/20",
-    accent: "#3b82f6",
+      "Custom blockchain solutions tailored to your business needs. From consensus mechanisms to network architecture.",
+    color: "from-blue-500 to-blue-600",
+    href: "/services",
   },
   {
     icon: FileCode,
     title: "Smart Contract Development",
     description:
-      "Secure, audited smart contracts for DeFi, NFTs, DAOs, and enterprise use cases. Solidity, Rust, and Move language expertise.",
-    features: ["Solidity/Rust", "Security Audits", "Gas Optimization"],
-    color: "purple",
-    gradient: "from-purple-500/20 to-pink-500/20",
-    accent: "#8b5cf6",
+      "Secure, audited smart contracts for DeFi, NFTs, and enterprise applications. Multi-chain deployment support.",
+    color: "from-purple-500 to-purple-600",
+    href: "/services",
   },
   {
-    icon: Layout,
+    icon: Globe,
     title: "DApp Development",
     description:
-      "Full-stack decentralized applications with intuitive UX. From concept to deployment with modern frontend frameworks.",
-    features: ["React/Next.js", "Wallet Integration", "IPFS Storage"],
-    color: "cyan",
-    gradient: "from-cyan-500/20 to-blue-500/20",
-    accent: "#06b6d4",
-  },
-  {
-    icon: Plug,
-    title: "Web3 Integration",
-    description:
-      "Seamless Web3 integration for existing applications. Wallet connectivity, token gating, and blockchain data indexing.",
-    features: ["WalletConnect", "SIWE Auth", "The Graph"],
-    color: "emerald",
-    gradient: "from-emerald-500/20 to-teal-500/20",
-    accent: "#10b981",
+      "Full-stack decentralized applications with intuitive UX. React, Vue, and mobile-native frameworks.",
+    color: "from-cyan-500 to-cyan-600",
+    href: "/services",
   },
   {
     icon: Server,
     title: "Node Infrastructure",
     description:
-      "Enterprise-grade node deployment and management. RPC endpoints, validators, and network monitoring solutions.",
-    features: ["RPC Nodes", "Validators", "Monitoring"],
-    color: "orange",
-    gradient: "from-orange-500/20 to-amber-500/20",
-    accent: "#f59e0b",
+      "Enterprise-grade node deployment and management. 99.99% uptime with global edge distribution.",
+    color: "from-emerald-500 to-emerald-600",
+    href: "/services",
   },
   {
-    icon: Lightbulb,
-    title: "Blockchain Consulting",
+    icon: Shield,
+    title: "Security Audits",
     description:
-      "Strategic advisory for blockchain adoption. Tokenomics design, regulatory guidance, and technical architecture planning.",
-    features: ["Tokenomics", "Compliance", "Architecture"],
-    color: "pink",
-    gradient: "from-pink-500/20 to-rose-500/20",
-    accent: "#ec4899",
+      "Comprehensive smart contract and protocol audits. Automated scanning + manual expert review.",
+    color: "from-orange-500 to-orange-600",
+    href: "/services",
+  },
+  {
+    icon: BarChart3,
+    title: "Blockchain Analytics",
+    description:
+      "Real-time on-chain data analysis and visualization. Custom dashboards and alerting systems.",
+    color: "from-pink-500 to-pink-600",
+    href: "/services",
   },
 ];
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.1 },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+};
+
 export function ServicesSection() {
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (sectionRef.current) observer.observe(sectionRef.current);
-    return () => observer.disconnect();
-  }, []);
-
   return (
-    <section
-      id="services"
-      ref={sectionRef}
-      className="relative py-24 lg:py-32 overflow-hidden"
-    >
-      <div className="absolute inset-0 bg-gradient-radial opacity-30" />
+    <section id="services" className="relative py-16 lg:py-20 overflow-hidden">
+      {/* Background glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[var(--primary)]/[0.04] rounded-full blur-3xl pointer-events-none" />
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div
-          className={`text-center mb-16 transition-all duration-1000 ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
+        {/* Section Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-12"
         >
-          <div
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6"
-            style={{
-              backgroundColor: "var(--glass-bg)",
-              border: "1px solid var(--glass-border)",
-            }}
-          >
-            <Sparkles className="w-4 h-4 text-blue-400" />
-            <span
-              className="text-sm font-medium"
-              style={{ color: "var(--link-color)" }}
-            >
-              Our Services
-            </span>
-          </div>
-          <h2
-            className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6"
-            style={{ color: "var(--text-primary)" }}
-          >
-            Comprehensive Blockchain
-            <span className="text-gradient"> Solutions</span>
+          <span className="inline-block px-4 py-1.5 rounded-full text-sm font-medium bg-[var(--primary)]/10 text-[var(--primary)] border border-[var(--primary)]/20 mb-4">
+            Our Services
+          </span>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[var(--text-primary)] mb-4">
+            Comprehensive{" "}
+            <span className="text-gradient">Blockchain Solutions</span>
           </h2>
-          <p
-            className="text-lg max-w-2xl mx-auto"
-            style={{ color: "var(--text-secondary)" }}
-          >
-            From ideation to deployment, we provide full-stack blockchain
-            services tailored to your business needs.
+          <p className="text-lg text-[var(--text-secondary)] max-w-2xl mx-auto">
+            End-to-end services for building, deploying, and scaling blockchain
+            infrastructure.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {services.map((service, index) => {
-            const isHovered = hoveredIndex === index;
-
-            return (
-              <Card
-                key={service.title}
-                className={`group glass-card transition-all duration-500 cursor-pointer overflow-hidden ${
-                  isVisible
-                    ? "opacity-100 translate-y-0"
-                    : "opacity-0 translate-y-8"
-                }`}
-                style={{
-                  animationDelay: `${index * 0.1}s`,
-                  borderColor: isHovered
-                    ? service.accent + "40"
-                    : "var(--glass-border)",
-                  transform: isHovered ? "translateY(-4px)" : "translateY(0)",
-                }}
-                onMouseEnter={() => setHoveredIndex(index)}
-                onMouseLeave={() => setHoveredIndex(null)}
-              >
-                {/* Hover gradient background */}
-                <div
-                  className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}
-                />
-
-                <CardContent className="relative p-6">
+        {/* Services Grid */}
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+          className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4"
+        >
+          {services.map((service) => (
+            <motion.div key={service.title} variants={itemVariants}>
+              <Link href={service.href}>
+                <div className="group relative h-full p-6 rounded-2xl floating-card">
+                  {/* Icon */}
                   <div
-                    className="inline-flex items-center justify-center w-12 h-12 rounded-xl mb-5 transition-all duration-300"
-                    style={{
-                      backgroundColor: isHovered
-                        ? service.accent + "20"
-                        : service.accent + "10",
-                      color: service.accent,
-                    }}
+                    className={`w-12 h-12 rounded-xl bg-gradient-to-br ${service.color} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}
                   >
-                    <service.icon className="w-6 h-6" />
+                    <service.icon className="w-6 h-6 text-[var(--text-primary)]" />
                   </div>
 
-                  <h3
-                    className="text-xl font-semibold mb-3"
-                    style={{ color: "var(--text-primary)" }}
-                  >
+                  <h3 className="text-xl font-semibold text-[var(--text-primary)] mb-2">
                     {service.title}
                   </h3>
-                  <p
-                    className="text-sm leading-relaxed mb-5"
-                    style={{ color: "var(--text-secondary)" }}
-                  >
+                  <p className="text-[var(--text-secondary)] text-sm leading-relaxed mb-4">
                     {service.description}
                   </p>
 
-                  <div className="flex flex-wrap gap-2 mb-5">
-                    {service.features.map((feature) => (
-                      <span
-                        key={feature}
-                        className="px-3 py-1 text-xs font-medium rounded-full transition-all duration-300"
-                        style={{
-                          backgroundColor: isHovered
-                            ? service.accent + "15"
-                            : "var(--glass-bg)",
-                          color: isHovered
-                            ? service.accent
-                            : "var(--text-secondary)",
-                          border: `1px solid ${
-                            isHovered
-                              ? service.accent + "30"
-                              : "var(--glass-border)"
-                          }`,
-                        }}
-                      >
-                        {feature}
-                      </span>
-                    ))}
+                  <div className="flex items-center text-sm text-[var(--link-color)] group-hover:text-[var(--link-hover)] transition-colors">
+                    <span>Learn more</span>
+                    <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
                   </div>
-
-                  <Link
-                    href="/services"
-                    className="inline-flex items-center text-sm font-medium transition-colors group/link"
-                    style={{ color: "var(--link-color)" }}
-                    onMouseEnter={(e) =>
-                      (e.currentTarget.style.color = "var(--link-hover)")
-                    }
-                    onMouseLeave={(e) =>
-                      (e.currentTarget.style.color = "var(--link-color)")
-                    }
-                  >
-                    View All Services
-                    <ArrowRight className="ml-1 w-4 h-4 group-hover/link:translate-x-1 transition-transform" />
-                  </Link>
-                </CardContent>
-              </Card>
-            );
-          })}
-        </div>
+                </div>
+              </Link>
+            </motion.div>
+          ))}
+        </motion.div>
       </div>
     </section>
   );

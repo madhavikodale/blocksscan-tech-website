@@ -94,9 +94,9 @@ export function ChatAdminDashboard() {
       case "waiting":
         return "bg-amber-500/20 text-amber-500 border-amber-500/30";
       case "closed":
-        return "bg-slate-500/20 text-slate-500 border-slate-500/30";
+        return "bg-slate-500/20 text-[var(--text-muted)] border-slate-500/30";
       default:
-        return "bg-slate-500/20 text-slate-500 border-slate-500/30";
+        return "bg-slate-500/20 text-[var(--text-muted)] border-slate-500/30";
     }
   };
 
@@ -111,7 +111,7 @@ export function ChatAdminDashboard() {
       case "low":
         return "text-blue-500";
       default:
-        return "text-slate-500";
+        return "text-[var(--text-muted)]";
     }
   };
 
@@ -306,7 +306,7 @@ export function ChatAdminDashboard() {
                     {filteredConversations.map((conv) => (
                       <TableRow
                         key={conv.id}
-                        className="cursor-pointer hover:bg-white/5 transition-colors"
+                        className="cursor-pointer hover:bg-[var(--glass-bg)] transition-colors"
                         style={{ borderColor: "var(--glass-border)" }}
                         onClick={() => {
                           setSelectedConversation(conv.id);

@@ -129,9 +129,9 @@ export function ChatWidget() {
             boxShadow: '0 8px 32px rgba(59, 130, 246, 0.3)',
           }}
         >
-          <MessageCircle className="w-6 h-6 text-white" />
+          <MessageCircle className="w-6 h-6 text-[var(--text-primary)]" />
           {unreadCount > 0 && (
-            <span className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-red-500 text-white text-xs flex items-center justify-center font-bold">
+            <span className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-red-500 text-[var(--text-primary)] text-xs flex items-center justify-center font-bold">
               {unreadCount}
             </span>
           )}
@@ -163,7 +163,7 @@ export function ChatWidget() {
                 className="w-10 h-10 rounded-xl flex items-center justify-center"
                 style={{ background: 'var(--btn-primary-bg)' }}
               >
-                <MessageCircle className="w-5 h-5 text-white" />
+                <MessageCircle className="w-5 h-5 text-[var(--text-primary)]" />
               </div>
               <div>
                 <h3 className="font-semibold text-sm" style={{ color: 'var(--text-primary)' }}>
@@ -180,14 +180,14 @@ export function ChatWidget() {
             <div className="flex items-center gap-1">
               <button 
                 onClick={() => setIsOpen(false)}
-                className="p-2 rounded-lg transition-colors hover:bg-white/5"
+                className="p-2 rounded-lg transition-colors hover:bg-[var(--glass-bg)]"
                 style={{ color: 'var(--text-secondary)' }}
               >
                 <Minimize2 className="w-4 h-4" />
               </button>
               <button 
                 onClick={() => setIsOpen(false)}
-                className="p-2 rounded-lg transition-colors hover:bg-white/5"
+                className="p-2 rounded-lg transition-colors hover:bg-[var(--glass-bg)]"
                 style={{ color: 'var(--text-secondary)' }}
               >
                 <X className="w-4 h-4" />
@@ -203,7 +203,7 @@ export function ChatWidget() {
                   className="w-16 h-16 rounded-2xl flex items-center justify-center"
                   style={{ background: 'var(--btn-primary-bg)' }}
                 >
-                  <User className="w-8 h-8 text-white" />
+                  <User className="w-8 h-8 text-[var(--text-primary)]" />
                 </div>
                 <div className="text-center space-y-1">
                   <h4 className="font-semibold" style={{ color: 'var(--text-primary)' }}>
@@ -240,7 +240,7 @@ export function ChatWidget() {
                   />
                   <Button 
                     type="submit" 
-                    className="w-full bg-gradient-primary hover:opacity-90 text-white"
+                    className="w-full bg-gradient-primary hover:opacity-90 text-[var(--text-primary)]"
                     disabled={!formName.trim()}
                   >
                     Start Chat
@@ -253,7 +253,7 @@ export function ChatWidget() {
                   className="w-16 h-16 rounded-2xl flex items-center justify-center"
                   style={{ background: 'var(--btn-primary-bg)' }}
                 >
-                  <MessageCircle className="w-8 h-8 text-white" />
+                  <MessageCircle className="w-8 h-8 text-[var(--text-primary)]" />
                 </div>
                 <div className="text-center space-y-1">
                   <h4 className="font-semibold" style={{ color: 'var(--text-primary)' }}>
@@ -271,7 +271,7 @@ export function ChatWidget() {
                         setInputValue(topic)
                         inputRef.current?.focus()
                       }}
-                      className="px-3 py-1.5 rounded-full text-xs font-medium transition-colors hover:bg-white/10"
+                      className="px-3 py-1.5 rounded-full text-xs font-medium transition-colors hover:bg-[var(--glass-bg-hover)]"
                       style={{ 
                         backgroundColor: 'var(--badge-bg)',
                         border: '1px solid var(--badge-border)',
@@ -400,7 +400,7 @@ export function ChatWidget() {
                 type="submit" 
                 size="icon"
                 disabled={!inputValue.trim() || isSending}
-                className="bg-gradient-primary hover:opacity-90 text-white disabled:opacity-50"
+                className="bg-gradient-primary hover:opacity-90 text-[var(--text-primary)] disabled:opacity-50"
               >
                 <Send className="w-4 h-4" />
               </Button>

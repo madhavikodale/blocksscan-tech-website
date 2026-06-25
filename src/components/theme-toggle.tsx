@@ -20,24 +20,24 @@ export function ThemeToggle() {
         {theme === "dark" && <Moon className="w-4 h-4" />}
         <span className="sr-only">Toggle theme</span>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end" className="glass-card border-white/10">
+      <DropdownMenuContent align="end" className="glass-card border-[var(--glass-border)]">
         <DropdownMenuItem
           onClick={() => setTheme("light")}
-          className={`cursor-pointer ${theme === "light" ? "bg-white/10 text-white" : "text-slate-300"}`}
+          className={`cursor-pointer ${theme === "light" ? "bg-[var(--glass-bg-hover)] text-[var(--text-primary)]" : "text-[var(--text-secondary)]"}`}
         >
           <Sun className="w-4 h-4 mr-2" />
           Light
         </DropdownMenuItem>
         <DropdownMenuItem
           onClick={() => setTheme("dim")}
-          className={`cursor-pointer ${theme === "dim" ? "bg-white/10 text-white" : "text-slate-300"}`}
+          className={`cursor-pointer ${theme === "dim" ? "bg-[var(--glass-bg-hover)] text-[var(--text-primary)]" : "text-[var(--text-secondary)]"}`}
         >
           <Laptop className="w-4 h-4 mr-2" />
           Dim
         </DropdownMenuItem>
         <DropdownMenuItem
           onClick={() => setTheme("dark")}
-          className={`cursor-pointer ${theme === "dark" ? "bg-white/10 text-white" : "text-slate-300"}`}
+          className={`cursor-pointer ${theme === "dark" ? "bg-[var(--glass-bg-hover)] text-[var(--text-primary)]" : "text-[var(--text-secondary)]"}`}
         >
           <Moon className="w-4 h-4 mr-2" />
           Dark

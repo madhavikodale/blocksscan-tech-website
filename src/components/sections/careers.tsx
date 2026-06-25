@@ -179,14 +179,14 @@ export function CareersSection() {
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-6">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--glass-bg)] border border-[var(--glass-border)] mb-6">
             <span className="text-sm text-pink-400 font-medium">Join Our Team</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[var(--text-primary)] mb-6">
             Build the Future of{" "}
             <span className="text-gradient">Blockchain</span>
           </h2>
-          <p className="text-lg text-slate-400 max-w-2xl mx-auto">
+          <p className="text-lg text-[var(--text-secondary)] max-w-2xl mx-auto">
             Join a team of passionate engineers, designers, and visionaries shaping the decentralized future.
           </p>
         </div>
@@ -196,16 +196,16 @@ export function CareersSection() {
           {benefits.map((benefit) => (
             <Card
               key={benefit.title}
-              className="glass-card border-white/[0.08] hover:border-white/20 transition-all"
+              className="glass-card border-white/[0.08] hover:border-[var(--glass-border-hover)] transition-all"
             >
               <CardContent className="p-6">
-                <div className="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-white/5 text-blue-400 mb-4">
+                <div className="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-[var(--glass-bg)] text-blue-400 mb-4">
                   <benefit.icon className="w-5 h-5" />
                 </div>
-                <h3 className="text-lg font-semibold text-white mb-2">
+                <h3 className="text-lg font-semibold text-[var(--text-primary)] mb-2">
                   {benefit.title}
                 </h3>
-                <p className="text-sm text-slate-400">{benefit.description}</p>
+                <p className="text-sm text-[var(--text-secondary)]">{benefit.description}</p>
               </CardContent>
             </Card>
           ))}
@@ -213,20 +213,20 @@ export function CareersSection() {
 
         {/* Open Positions */}
         <div className="mb-8">
-          <h3 className="text-2xl font-bold text-white mb-8">
+          <h3 className="text-2xl font-bold text-[var(--text-primary)] mb-8">
             Open Positions ({positions.length})
           </h3>
           <div className="space-y-4">
             {positions.map((position) => (
               <Card
                 key={position.id}
-                className="glass-card border-white/[0.08] hover:border-white/20 transition-all group"
+                className="glass-card border-white/[0.08] hover:border-[var(--glass-border-hover)] transition-all group"
               >
                 <CardContent className="p-6">
                   <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
                     <div className="flex-1">
                       <div className="flex flex-wrap items-center gap-2 mb-3">
-                        <h4 className="text-lg font-semibold text-white">
+                        <h4 className="text-lg font-semibold text-[var(--text-primary)]">
                           {position.title}
                         </h4>
                         <Badge
@@ -236,10 +236,10 @@ export function CareersSection() {
                           {position.department}
                         </Badge>
                       </div>
-                      <p className="text-slate-400 text-sm mb-4 max-w-2xl">
+                      <p className="text-[var(--text-secondary)] text-sm mb-4 max-w-2xl">
                         {position.description}
                       </p>
-                      <div className="flex flex-wrap items-center gap-4 text-sm text-slate-500">
+                      <div className="flex flex-wrap items-center gap-4 text-sm text-[var(--text-muted)]">
                         <span className="flex items-center gap-1">
                           <MapPin className="w-4 h-4" />
                           {position.location}
@@ -261,7 +261,7 @@ export function CareersSection() {
                     <Button
                       onClick={() => setSelectedJob(position.id)}
                       variant="outline"
-                      className="border-white/20 text-white hover:bg-white/10 group/btn shrink-0"
+                      className="border-[var(--glass-border-hover)] text-[var(--text-primary)] hover:bg-[var(--glass-bg-hover)] group/btn shrink-0"
                     >
                       Apply Now
                       <ArrowRight className="ml-2 w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
@@ -277,26 +277,26 @@ export function CareersSection() {
       {/* Application Modal */}
       {selectedJob && selectedPosition && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
-          <Card className="w-full max-w-2xl max-h-[90vh] overflow-y-auto glass-card border-white/20">
+          <Card className="w-full max-w-2xl max-h-[90vh] overflow-y-auto glass-card border-[var(--glass-border-hover)]">
             <CardContent className="p-6 lg:p-8">
               <div className="flex items-center justify-between mb-6">
                 <div>
-                  <h3 className="text-xl font-bold text-white">Apply for {selectedPosition.title}</h3>
-                  <p className="text-sm text-slate-400 mt-1">{selectedPosition.department} · {selectedPosition.location} · {selectedPosition.salary}</p>
+                  <h3 className="text-xl font-bold text-[var(--text-primary)]">Apply for {selectedPosition.title}</h3>
+                  <p className="text-sm text-[var(--text-secondary)] mt-1">{selectedPosition.department} · {selectedPosition.location} · {selectedPosition.salary}</p>
                 </div>
                 <button
                   onClick={() => setSelectedJob(null)}
-                  className="p-2 rounded-lg hover:bg-white/10 text-slate-400 hover:text-white transition-colors"
+                  className="p-2 rounded-lg hover:bg-[var(--glass-bg-hover)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
                 >
                   <X className="w-5 h-5" />
                 </button>
               </div>
 
               <div className="mb-6">
-                <h4 className="text-sm font-semibold text-white mb-2">Requirements:</h4>
+                <h4 className="text-sm font-semibold text-[var(--text-primary)] mb-2">Requirements:</h4>
                 <ul className="space-y-1">
                   {selectedPosition.requirements.map((req, i) => (
-                    <li key={i} className="text-sm text-slate-400 flex items-start gap-2">
+                    <li key={i} className="text-sm text-[var(--text-secondary)] flex items-start gap-2">
                       <span className="text-blue-400 mt-1">•</span> {req}
                     </li>
                   ))}
@@ -308,30 +308,30 @@ export function CareersSection() {
                   <div className="w-16 h-16 rounded-full bg-emerald-500/10 flex items-center justify-center mb-4">
                     <CheckCircle className="w-8 h-8 text-emerald-400" />
                   </div>
-                  <h4 className="text-lg font-semibold text-white mb-2">Application Submitted!</h4>
-                  <p className="text-slate-400">We'll review your application and get back to you within 5 business days.</p>
+                  <h4 className="text-lg font-semibold text-[var(--text-primary)] mb-2">Application Submitted!</h4>
+                  <p className="text-[var(--text-secondary)]">We'll review your application and get back to you within 5 business days.</p>
                 </div>
               ) : (
                 <form onSubmit={handleApply} className="space-y-4" noValidate>
                   <div className="grid sm:grid-cols-2 gap-4">
                     <div>
-                      <label className="text-sm font-medium text-slate-300 mb-1 block">Full Name <span className="text-red-400">*</span></label>
+                      <label className="text-sm font-medium text-[var(--text-secondary)] mb-1 block">Full Name <span className="text-red-400">*</span></label>
                       <Input
                         name="name"
                         placeholder="John Doe"
-                        className={`bg-white/5 border-white/10 text-white placeholder:text-slate-500 ${errors.name ? "border-red-500/50" : ""}`}
+                        className={`bg-[var(--glass-bg)] border-[var(--glass-border)] text-[var(--text-primary)] placeholder:text-[var(--text-muted)] ${errors.name ? "border-red-500/50" : ""}`}
                         value={formData.name}
                         onChange={handleChange}
                       />
                       {errors.name && <p className="text-xs text-red-400 mt-1 flex items-center gap-1"><AlertCircle className="w-3 h-3" /> {errors.name}</p>}
                     </div>
                     <div>
-                      <label className="text-sm font-medium text-slate-300 mb-1 block">Email <span className="text-red-400">*</span></label>
+                      <label className="text-sm font-medium text-[var(--text-secondary)] mb-1 block">Email <span className="text-red-400">*</span></label>
                       <Input
                         name="email"
                         type="email"
                         placeholder="john@example.com"
-                        className={`bg-white/5 border-white/10 text-white placeholder:text-slate-500 ${errors.email ? "border-red-500/50" : ""}`}
+                        className={`bg-[var(--glass-bg)] border-[var(--glass-border)] text-[var(--text-primary)] placeholder:text-[var(--text-muted)] ${errors.email ? "border-red-500/50" : ""}`}
                         value={formData.email}
                         onChange={handleChange}
                       />
@@ -339,22 +339,22 @@ export function CareersSection() {
                     </div>
                   </div>
                   <div>
-                    <label className="text-sm font-medium text-slate-300 mb-1 block">Portfolio / GitHub / LinkedIn</label>
+                    <label className="text-sm font-medium text-[var(--text-secondary)] mb-1 block">Portfolio / GitHub / LinkedIn</label>
                     <Input
                       name="portfolio"
                       placeholder="https://github.com/johndoe"
-                      className="bg-white/5 border-white/10 text-white placeholder:text-slate-500"
+                      className="bg-[var(--glass-bg)] border-[var(--glass-border)] text-[var(--text-primary)] placeholder:text-[var(--text-muted)]"
                       value={formData.portfolio}
                       onChange={handleChange}
                     />
                   </div>
                   <div>
-                    <label className="text-sm font-medium text-slate-300 mb-1 block">Cover Letter <span className="text-red-400">*</span></label>
+                    <label className="text-sm font-medium text-[var(--text-secondary)] mb-1 block">Cover Letter <span className="text-red-400">*</span></label>
                     <Textarea
                       name="coverLetter"
                       placeholder="Tell us why you're a great fit for this role..."
                       rows={4}
-                      className={`bg-white/5 border-white/10 text-white placeholder:text-slate-500 resize-none ${errors.coverLetter ? "border-red-500/50" : ""}`}
+                      className={`bg-[var(--glass-bg)] border-[var(--glass-border)] text-[var(--text-primary)] placeholder:text-[var(--text-muted)] resize-none ${errors.coverLetter ? "border-red-500/50" : ""}`}
                       value={formData.coverLetter}
                       onChange={handleChange}
                     />
@@ -365,14 +365,14 @@ export function CareersSection() {
                       type="button"
                       variant="outline"
                       onClick={() => setSelectedJob(null)}
-                      className="border-white/20 text-white hover:bg-white/10"
+                      className="border-[var(--glass-border-hover)] text-[var(--text-primary)] hover:bg-[var(--glass-bg-hover)]"
                     >
                       Cancel
                     </Button>
                     <Button
                       type="submit"
                       disabled={submitting}
-                      className="bg-gradient-primary hover:opacity-90 text-white border-0 disabled:opacity-50"
+                      className="bg-gradient-primary hover:opacity-90 text-[var(--text-primary)] border-0 disabled:opacity-50"
                     >
                       {submitting ? (
                         <span className="flex items-center gap-2">

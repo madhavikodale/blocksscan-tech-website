@@ -102,7 +102,7 @@ export function GlobalSearch() {
     <>
       <button
         onClick={() => setOpen(true)}
-        className="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm border transition-colors hover:bg-white/5"
+        className="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm border transition-colors hover:bg-[var(--glass-bg)]"
         style={{
           backgroundColor: "var(--glass-bg)",
           borderColor: "var(--glass-border)",
@@ -158,7 +158,7 @@ export function GlobalSearch() {
                     <CommandItem
                       key={item.href}
                       onSelect={() => handleSelect(item.href)}
-                      className="flex items-center gap-3 px-3 py-2 rounded-lg cursor-pointer hover:bg-white/5"
+                      className="flex items-center gap-3 px-3 py-2 rounded-lg cursor-pointer hover:bg-[var(--glass-bg)]"
                       style={{ color: "var(--text-primary)" }}
                     >
                       <Icon className="w-4 h-4" style={{ color: "var(--text-muted)" }} />
@@ -179,7 +179,7 @@ export function GlobalSearch() {
                   <CommandItem
                     key={action.value}
                     onSelect={() => handleThemeChange(action.value)}
-                    className="flex items-center gap-3 px-3 py-2 rounded-lg cursor-pointer hover:bg-white/5"
+                    className="flex items-center gap-3 px-3 py-2 rounded-lg cursor-pointer hover:bg-[var(--glass-bg)]"
                     style={{ color: "var(--text-primary)" }}
                   >
                     <Icon className="w-4 h-4" style={{ color: "var(--text-muted)" }} />

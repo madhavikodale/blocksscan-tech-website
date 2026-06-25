@@ -54,14 +54,14 @@ export function FAQSection() {
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-6">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--glass-bg)] border border-[var(--glass-border)] mb-6">
             <span className="text-sm text-blue-400 font-medium">FAQ</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[var(--text-primary)] mb-6">
             Frequently Asked{" "}
             <span className="text-gradient">Questions</span>
           </h2>
-          <p className="text-lg text-slate-400 max-w-2xl mx-auto">
+          <p className="text-lg text-[var(--text-secondary)] max-w-2xl mx-auto">
             Everything you need to know about our blockchain services and process.
           </p>
         </div>
@@ -78,18 +78,18 @@ export function FAQSection() {
                 }
                 className="w-full flex items-center justify-between p-6 text-left"
               >
-                <span className="text-white font-medium pr-4">
+                <span className="text-[var(--text-primary)] font-medium pr-4">
                   {faq.question}
                 </span>
                 {openIndex === index ? (
                   <ChevronUp className="w-5 h-5 text-blue-400 shrink-0" />
                 ) : (
-                  <ChevronDown className="w-5 h-5 text-slate-400 shrink-0" />
+                  <ChevronDown className="w-5 h-5 text-[var(--text-secondary)] shrink-0" />
                 )}
               </button>
               {openIndex === index && (
                 <div className="px-6 pb-6">
-                  <p className="text-slate-400 leading-relaxed">
+                  <p className="text-[var(--text-secondary)] leading-relaxed">
                     {faq.answer}
                   </p>
                 </div>

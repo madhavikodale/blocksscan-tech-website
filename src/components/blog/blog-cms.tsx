@@ -200,7 +200,7 @@ export function BlogCMS() {
               </h1>
               <div className="flex items-center gap-4 text-sm" style={{ color: "var(--text-muted)" }}>
                 <div className="flex items-center gap-2">
-                  <div className="w-8 h-8 rounded-full bg-gradient-primary flex items-center justify-center text-white text-xs font-bold">
+                  <div className="w-8 h-8 rounded-full bg-gradient-primary flex items-center justify-center text-[var(--text-primary)] text-xs font-bold">
                     {selectedPost.authorAvatar}
                   </div>
                   <span>{selectedPost.author}</span>
@@ -322,7 +322,7 @@ export function BlogCMS() {
                 </p>
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
-                    <div className="w-6 h-6 rounded-full bg-gradient-primary flex items-center justify-center text-white text-[10px] font-bold">
+                    <div className="w-6 h-6 rounded-full bg-gradient-primary flex items-center justify-center text-[var(--text-primary)] text-[10px] font-bold">
                       {post.authorAvatar}
                     </div>
                     <span className="text-xs" style={{ color: "var(--text-muted)" }}>
@@ -360,7 +360,7 @@ export function BlogCMS() {
                 key={cat}
                 onClick={() => setSelectedCategory(cat)}
                 className={`px-4 py-2 rounded-lg text-sm font-medium whitespace-nowrap transition-all border ${
-                  selectedCategory === cat ? "border-primary/50" : "hover:bg-white/5"
+                  selectedCategory === cat ? "border-primary/50" : "hover:bg-[var(--glass-bg)]"
                 }`}
                 style={{
                   backgroundColor: selectedCategory === cat ? "var(--badge-bg)" : "var(--glass-bg)",

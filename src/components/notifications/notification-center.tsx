@@ -31,12 +31,12 @@ export function NotificationCenter() {
     <div className="relative">
       <button
         onClick={() => setOpen(!open)}
-        className="relative p-2 rounded-lg transition-colors hover:bg-white/5"
+        className="relative p-2 rounded-lg transition-colors hover:bg-[var(--glass-bg)]"
         style={{ color: "var(--text-secondary)" }}
       >
         <Bell className="w-5 h-5" />
         {unreadCount > 0 && (
-          <span className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-red-500 text-white text-xs flex items-center justify-center font-bold">
+          <span className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-red-500 text-[var(--text-primary)] text-xs flex items-center justify-center font-bold">
             {unreadCount > 9 ? "9+" : unreadCount}
           </span>
         )}
@@ -63,7 +63,7 @@ export function NotificationCenter() {
                 {unreadCount > 0 && (
                   <button
                     onClick={markAllAsRead}
-                    className="p-1.5 rounded-lg transition-colors hover:bg-white/5"
+                    className="p-1.5 rounded-lg transition-colors hover:bg-[var(--glass-bg)]"
                     style={{ color: "var(--text-muted)" }}
                     title="Mark all as read"
                   >
@@ -72,7 +72,7 @@ export function NotificationCenter() {
                 )}
                 <button
                   onClick={clearAll}
-                  className="p-1.5 rounded-lg transition-colors hover:bg-white/5"
+                  className="p-1.5 rounded-lg transition-colors hover:bg-[var(--glass-bg)]"
                   style={{ color: "var(--text-muted)" }}
                   title="Clear all"
                 >
@@ -80,7 +80,7 @@ export function NotificationCenter() {
                 </button>
                 <button
                   onClick={() => setOpen(false)}
-                  className="p-1.5 rounded-lg transition-colors hover:bg-white/5"
+                  className="p-1.5 rounded-lg transition-colors hover:bg-[var(--glass-bg)]"
                   style={{ color: "var(--text-muted)" }}
                 >
                   <X className="w-4 h-4" />
@@ -104,7 +104,7 @@ export function NotificationCenter() {
                     <div
                       key={notification.id}
                       className={`flex gap-3 px-4 py-3 border-b transition-colors cursor-pointer ${
-                        notification.read ? "opacity-60" : "hover:bg-white/5"
+                        notification.read ? "opacity-60" : "hover:bg-[var(--glass-bg)]"
                       }`}
                       style={{ borderColor: "var(--glass-border)" }}
                       onClick={() => markAsRead(notification.id)}
@@ -145,7 +145,7 @@ export function NotificationCenter() {
                           e.stopPropagation();
                           dismissNotification(notification.id);
                         }}
-                        className="p-1 rounded-lg transition-colors hover:bg-white/5 flex-shrink-0"
+                        className="p-1 rounded-lg transition-colors hover:bg-[var(--glass-bg)] flex-shrink-0"
                         style={{ color: "var(--text-muted)" }}
                       >
                         <X className="w-3 h-3" />

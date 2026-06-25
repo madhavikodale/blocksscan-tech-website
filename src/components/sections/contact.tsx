@@ -1,336 +1,197 @@
 "use client";
 
 import { useState } from "react";
-import { Card, CardContent } from "@/components/ui/card";
+import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import {
+  Mail,
   MapPin,
   Phone,
-  Mail,
-  Clock,
   Send,
   CheckCircle,
-  Globe,
-  MessageSquare,
-  Share2,
-  AlertCircle,
 } from "lucide-react";
 
-const contactInfo = [
-  {
-    icon: Mail,
-    label: "Email",
-    value: "hello@blocksscan.tech",
-    href: "mailto:hello@blocksscan.tech",
-  },
-  {
-    icon: Phone,
-    label: "Phone",
-    value: "+1 (555) 123-4567",
-    href: "tel:+15551234567",
-  },
-  {
-    icon: MapPin,
-    label: "Address",
-    value: "123 Blockchain Blvd, San Francisco, CA 94105",
-    href: "#",
-  },
-  {
-    icon: Clock,
-    label: "Hours",
-    value: "Mon - Fri: 9:00 AM - 6:00 PM PST",
-    href: "#",
-  },
-];
-
-const socialLinks = [
-  { icon: Globe, href: "https://blocksscan.tech", label: "Website" },
-  { icon: MessageSquare, href: "https://discord.gg/blocksscan", label: "Discord" },
-  { icon: Share2, href: "https://t.me/blocksscan", label: "Telegram" },
-];
-
 export function ContactSection() {
-  const [submitted, setSubmitted] = useState(false);
-  const [submitting, setSubmitting] = useState(false);
-  const [errors, setErrors] = useState<Record<string, string>>({});
-  const [formData, setFormData] = useState({
+  const [formState, setFormState] = useState({
     name: "",
     email: "",
     company: "",
-    subject: "",
     message: "",
   });
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const validate = () => {
-    const newErrors: Record<string, string> = {};
-    if (!formData.name.trim()) newErrors.name = "Name is required";
-    if (!formData.email.trim()) {
-      newErrors.email = "Email is required";
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      newErrors.email = "Please enter a valid email";
-    }
-    if (!formData.subject.trim()) newErrors.subject = "Subject is required";
-    if (!formData.message.trim()) {
-      newErrors.message = "Message is required";
-    } else if (formData.message.length < 10) {
-      newErrors.message = "Message must be at least 10 characters";
-    }
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!validate()) return;
-
-    setSubmitting(true);
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-    setSubmitting(false);
-    setSubmitted(true);
-
-    // Reset after 5 seconds
-    setTimeout(() => {
-      setSubmitted(false);
-      setFormData({ name: "", email: "", company: "", subject: "", message: "" });
-    }, 5000);
-  };
-
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-    if (errors[name]) {
-      setErrors((prev) => {
-        const next = { ...prev };
-        delete next[name];
-        return next;
-      });
-    }
+    setIsSubmitted(true);
+    setTimeout(() => setIsSubmitted(false), 3000);
   };
 
   return (
-    <section id="contact" className="relative py-24 lg:py-32">
-      <div className="absolute inset-0 bg-gradient-radial opacity-30" />
+    <section id="contact" className="relative py-16 lg:py-20 overflow-hidden">
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-[var(--primary)]/[0.04] rounded-full blur-3xl pointer-events-none" />
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-6">
-            <span className="text-sm text-blue-400 font-medium">Contact</span>
-          </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">
-            Let's Build{" "}
-            <span className="text-gradient">Together</span>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-12"
+        >
+          <span className="inline-block px-4 py-1.5 rounded-full text-sm font-medium bg-[var(--primary)]/10 text-[var(--primary)] border border-[var(--primary)]/20 mb-4">
+            Contact Us
+          </span>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[var(--text-primary)] mb-4">
+            Get in{" "}
+            <span className="text-gradient">Touch</span>
           </h2>
-          <p className="text-lg text-slate-400 max-w-2xl mx-auto">
-            Ready to start your blockchain journey? Get in touch with our team
-            for a free consultation.
+          <p className="text-lg text-[var(--text-secondary)] max-w-2xl mx-auto">
+            Ready to build your blockchain solution? Let's talk.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
+        <div className="grid lg:grid-cols-2 gap-12">
           {/* Contact Info */}
-          <div className="space-y-6">
-            <div className="grid sm:grid-cols-2 gap-4">
-              {contactInfo.map((info) => (
-                <Card
-                  key={info.label}
-                  className="glass-card border-white/[0.08] hover:border-white/20 transition-all"
-                >
-                  <CardContent className="p-5">
-                    <a href={info.href} className="flex items-start gap-4">
-                      <div className="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-blue-500/10 text-blue-400 shrink-0">
-                        <info.icon className="w-5 h-5" />
-                      </div>
-                      <div>
-                        <div className="text-sm font-medium text-slate-400 mb-1">
-                          {info.label}
-                        </div>
-                        <div className="text-white text-sm">{info.value}</div>
-                      </div>
-                    </a>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-
-            <Card className="glass-card border-white/[0.08]">
-              <CardContent className="p-6">
-                <h3 className="text-lg font-semibold text-white mb-4">
-                  Follow Us
-                </h3>
-                <div className="flex items-center gap-3">
-                  {socialLinks.map((social) => (
-                    <a
-                      key={social.label}
-                      href={social.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center justify-center w-10 h-10 rounded-lg bg-white/5 border border-white/10 text-slate-400 hover:text-white hover:bg-white/10 transition-all"
-                      aria-label={social.label}
-                    >
-                      <social.icon className="w-5 h-5" />
-                    </a>
-                  ))}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <div className="space-y-8">
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[var(--gradient-text-from)] to-[var(--gradient-text-to)] flex items-center justify-center flex-shrink-0">
+                  <Mail className="w-5 h-5 text-[var(--text-primary)]" />
                 </div>
-              </CardContent>
-            </Card>
+                <div>
+                  <h3 className="text-[var(--text-primary)] font-semibold mb-1">Email</h3>
+                  <p className="text-[var(--text-secondary)]">contact@blocksscan.io</p>
+                  <p className="text-[var(--text-secondary)]">support@blocksscan.io</p>
+                </div>
+              </div>
 
-            <Card className="glass-card border-white/[0.08] bg-gradient-to-br from-blue-500/5 to-purple-500/5">
-              <CardContent className="p-6">
-                <h3 className="text-lg font-semibold text-white mb-2">
-                  Need Urgent Help?
-                </h3>
-                <p className="text-sm text-slate-400 mb-4">
-                  For enterprise inquiries and urgent support, schedule a call with our team.
-                </p>
-                <a
-                  href="https://calendly.com/blocksscan"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center text-sm font-medium text-blue-400 hover:text-blue-300 transition-colors"
-                >
-                  Schedule a Call →
-                </a>
-              </CardContent>
-            </Card>
-          </div>
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[var(--accent)] to-[var(--primary)] flex items-center justify-center flex-shrink-0">
+                  <Phone className="w-5 h-5 text-[var(--text-primary)]" />
+                </div>
+                <div>
+                  <h3 className="text-[var(--text-primary)] font-semibold mb-1">Phone</h3>
+                  <p className="text-[var(--text-secondary)]">+1 (555) 123-4567</p>
+                  <p className="text-[var(--text-secondary)]">Mon-Fri 9am-6pm PST</p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-orange-500 to-red-500 flex items-center justify-center flex-shrink-0">
+                  <MapPin className="w-5 h-5 text-[var(--text-primary)]" />
+                </div>
+                <div>
+                  <h3 className="text-[var(--text-primary)] font-semibold mb-1">Office</h3>
+                  <p className="text-[var(--text-secondary)]">123 Blockchain Ave</p>
+                  <p className="text-[var(--text-secondary)]">San Francisco, CA 94105</p>
+                </div>
+              </div>
+            </div>
+          </motion.div>
 
           {/* Contact Form */}
-          <Card className="glass-card border-white/[0.08]">
-            <CardContent className="p-6 lg:p-8">
-              {submitted ? (
-                <div className="flex flex-col items-center justify-center py-12 text-center animate-scale-in">
-                  <div className="w-16 h-16 rounded-full bg-emerald-500/10 flex items-center justify-center mb-4">
-                    <CheckCircle className="w-8 h-8 text-emerald-400" />
-                  </div>
-                  <h3 className="text-xl font-semibold text-white mb-2">
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <form
+              onSubmit={handleSubmit}
+              className="p-8 rounded-2xl glass-card"
+            >
+              {isSubmitted ? (
+                <div className="text-center py-12">
+                  <CheckCircle className="w-16 h-16 text-emerald-400 mx-auto mb-4" />
+                  <h3 className="text-xl font-semibold text-[var(--text-primary)] mb-2">
                     Message Sent!
                   </h3>
-                  <p className="text-slate-400">
+                  <p className="text-[var(--text-secondary)]">
                     We'll get back to you within 24 hours.
                   </p>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-5" noValidate>
-                  <div className="grid sm:grid-cols-2 gap-5">
+                <>
+                  <div className="grid sm:grid-cols-2 gap-4 mb-4">
                     <div>
-                      <label className="text-sm font-medium text-slate-300 mb-2 block">
-                        Name <span className="text-red-400">*</span>
+                      <label className="block text-sm text-[var(--text-secondary)] mb-2">
+                        Name
                       </label>
-                      <Input
-                        name="name"
+                      <input
+                        type="text"
+                        value={formState.name}
+                        onChange={(e) =>
+                          setFormState({ ...formState, name: e.target.value })
+                        }
+                        className="w-full px-4 py-2.5 rounded-xl bg-[var(--input-bg)] border border-[var(--input-border)] text-[var(--text-primary)] placeholder:text-[var(--text-muted)] text-sm focus:outline-none focus:border-[var(--primary)]/50 focus:ring-1 focus:ring-[var(--primary)]/50 transition-colors"
                         placeholder="John Doe"
-                        className={`bg-white/5 border-white/10 text-white placeholder:text-slate-500 focus:border-blue-500/50 ${
-                          errors.name ? "border-red-500/50" : ""
-                        }`}
-                        value={formData.name}
-                        onChange={handleChange}
+                        required
                       />
-                      {errors.name && (
-                        <p className="text-xs text-red-400 mt-1 flex items-center gap-1">
-                          <AlertCircle className="w-3 h-3" /> {errors.name}
-                        </p>
-                      )}
                     </div>
                     <div>
-                      <label className="text-sm font-medium text-slate-300 mb-2 block">
-                        Email <span className="text-red-400">*</span>
+                      <label className="block text-sm text-[var(--text-secondary)] mb-2">
+                        Email
                       </label>
-                      <Input
-                        name="email"
+                      <input
                         type="email"
+                        value={formState.email}
+                        onChange={(e) =>
+                          setFormState({ ...formState, email: e.target.value })
+                        }
+                        className="w-full px-4 py-2.5 rounded-xl bg-[var(--input-bg)] border border-[var(--input-border)] text-[var(--text-primary)] placeholder:text-[var(--text-muted)] text-sm focus:outline-none focus:border-[var(--primary)]/50 focus:ring-1 focus:ring-[var(--primary)]/50 transition-colors"
                         placeholder="john@company.com"
-                        className={`bg-white/5 border-white/10 text-white placeholder:text-slate-500 focus:border-blue-500/50 ${
-                          errors.email ? "border-red-500/50" : ""
-                        }`}
-                        value={formData.email}
-                        onChange={handleChange}
+                        required
                       />
-                      {errors.email && (
-                        <p className="text-xs text-red-400 mt-1 flex items-center gap-1">
-                          <AlertCircle className="w-3 h-3" /> {errors.email}
-                        </p>
-                      )}
                     </div>
                   </div>
-                  <div className="grid sm:grid-cols-2 gap-5">
-                    <div>
-                      <label className="text-sm font-medium text-slate-300 mb-2 block">
-                        Company
-                      </label>
-                      <Input
-                        name="company"
-                        placeholder="Your Company"
-                        className="bg-white/5 border-white/10 text-white placeholder:text-slate-500 focus:border-blue-500/50"
-                        value={formData.company}
-                        onChange={handleChange}
-                      />
-                    </div>
-                    <div>
-                      <label className="text-sm font-medium text-slate-300 mb-2 block">
-                        Subject <span className="text-red-400">*</span>
-                      </label>
-                      <Input
-                        name="subject"
-                        placeholder="Project Inquiry"
-                        className={`bg-white/5 border-white/10 text-white placeholder:text-slate-500 focus:border-blue-500/50 ${
-                          errors.subject ? "border-red-500/50" : ""
-                        }`}
-                        value={formData.subject}
-                        onChange={handleChange}
-                      />
-                      {errors.subject && (
-                        <p className="text-xs text-red-400 mt-1 flex items-center gap-1">
-                          <AlertCircle className="w-3 h-3" /> {errors.subject}
-                        </p>
-                      )}
-                    </div>
-                  </div>
-                  <div>
-                    <label className="text-sm font-medium text-slate-300 mb-2 block">
-                      Message <span className="text-red-400">*</span>
+
+                  <div className="mb-4">
+                    <label className="block text-sm text-[var(--text-secondary)] mb-2">
+                      Company
                     </label>
-                    <Textarea
-                      name="message"
-                      placeholder="Tell us about your project..."
-                      rows={5}
-                      className={`bg-white/5 border-white/10 text-white placeholder:text-slate-500 focus:border-blue-500/50 resize-none ${
-                        errors.message ? "border-red-500/50" : ""
-                      }`}
-                      value={formData.message}
-                      onChange={handleChange}
+                    <input
+                      type="text"
+                      value={formState.company}
+                      onChange={(e) =>
+                        setFormState({ ...formState, company: e.target.value })
+                      }
+                      className="w-full px-4 py-2.5 rounded-xl bg-[var(--input-bg)] border border-[var(--input-border)] text-[var(--text-primary)] placeholder:text-[var(--text-muted)] text-sm focus:outline-none focus:border-[var(--primary)]/50 focus:ring-1 focus:ring-[var(--primary)]/50 transition-colors"
+                      placeholder="Acme Corp"
                     />
-                    {errors.message && (
-                      <p className="text-xs text-red-400 mt-1 flex items-center gap-1">
-                        <AlertCircle className="w-3 h-3" /> {errors.message}
-                      </p>
-                    )}
                   </div>
+
+                  <div className="mb-6">
+                    <label className="block text-sm text-[var(--text-secondary)] mb-2">
+                      Message
+                    </label>
+                    <textarea
+                      value={formState.message}
+                      onChange={(e) =>
+                        setFormState({ ...formState, message: e.target.value })
+                      }
+                      rows={4}
+                      className="w-full px-4 py-2.5 rounded-xl bg-[var(--input-bg)] border border-[var(--input-border)] text-[var(--text-primary)] placeholder:text-[var(--text-muted)] text-sm focus:outline-none focus:border-[var(--primary)]/50 focus:ring-1 focus:ring-[var(--primary)]/50 transition-colors resize-none"
+                      placeholder="Tell us about your project..."
+                      required
+                    />
+                  </div>
+
                   <Button
                     type="submit"
-                    disabled={submitting}
-                    className="w-full bg-gradient-primary hover:opacity-90 text-white border-0 h-12 text-base font-medium disabled:opacity-50"
+                    className="w-full bg-gradient-primary hover:opacity-90 text-[var(--text-primary)] border-0 h-12"
                   >
-                    {submitting ? (
-                      <span className="flex items-center gap-2">
-                        <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                        Sending...
-                      </span>
-                    ) : (
-                      <>
-                        <Send className="w-4 h-4 mr-2" />
-                        Send Message
-                      </>
-                    )}
+                    <Send className="w-4 h-4 mr-2" />
+                    Send Message
                   </Button>
-                </form>
+                </>
               )}
-            </CardContent>
-          </Card>
+            </form>
+          </motion.div>
         </div>
       </div>
     </section>

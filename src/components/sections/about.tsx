@@ -40,15 +40,15 @@ export function AboutSection() {
       
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-6">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--glass-bg)] border border-[var(--glass-border)] mb-6">
             <span className="text-sm text-cyan-400 font-medium">About Us</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[var(--text-primary)] mb-6">
             Pioneering the
             <span className="text-gradient"> Blockchain </span>
             Revolution
           </h2>
-          <p className="text-lg text-slate-400 max-w-3xl mx-auto">
+          <p className="text-lg text-[var(--text-secondary)] max-w-3xl mx-auto">
             BlocksScan Technology was founded with a singular mission: to make blockchain technology accessible, 
             secure, and scalable for businesses of all sizes. We believe in a decentralized future.
           </p>
@@ -61,8 +61,8 @@ export function AboutSection() {
               <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-blue-500/10 text-blue-400 mb-6">
                 <Eye className="w-6 h-6" />
               </div>
-              <h3 className="text-2xl font-bold text-white mb-4">Our Vision</h3>
-              <p className="text-slate-400 leading-relaxed">
+              <h3 className="text-2xl font-bold text-[var(--text-primary)] mb-4">Our Vision</h3>
+              <p className="text-[var(--text-secondary)] leading-relaxed">
                 To be the leading force in blockchain adoption, empowering businesses to leverage 
                 decentralized technology for transparent, efficient, and trustless operations. We envision 
                 a world where blockchain is as ubiquitous as the internet.
@@ -75,8 +75,8 @@ export function AboutSection() {
               <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-purple-500/10 text-purple-400 mb-6">
                 <Target className="w-6 h-6" />
               </div>
-              <h3 className="text-2xl font-bold text-white mb-4">Our Mission</h3>
-              <p className="text-slate-400 leading-relaxed">
+              <h3 className="text-2xl font-bold text-[var(--text-primary)] mb-4">Our Mission</h3>
+              <p className="text-[var(--text-secondary)] leading-relaxed">
                 To deliver enterprise-grade blockchain solutions that solve real-world problems. We combine 
                 technical excellence with business acumen to create solutions that drive measurable ROI 
                 for our clients.
@@ -90,26 +90,26 @@ export function AboutSection() {
           {teamHighlights.map((item) => (
             <div key={item.label} className="text-center p-6 rounded-2xl glass-card">
               <div className="text-3xl sm:text-4xl font-bold text-gradient mb-2">{item.stat}</div>
-              <div className="text-sm text-slate-400">{item.label}</div>
+              <div className="text-sm text-[var(--text-secondary)]">{item.label}</div>
             </div>
           ))}
         </div>
 
         {/* Core Values */}
         <div>
-          <h3 className="text-2xl font-bold text-white text-center mb-10">Our Core Values</h3>
+          <h3 className="text-2xl font-bold text-[var(--text-primary)] text-center mb-10">Our Core Values</h3>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {values.map((value) => (
               <Card
                 key={value.title}
-                className="glass-card border-white/[0.08] hover:border-white/20 transition-all duration-300 group"
+                className="glass-card border-white/[0.08] hover:border-[var(--glass-border-hover)] transition-all duration-300 group"
               >
                 <CardContent className="p-6">
-                  <div className="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-white/5 text-blue-400 mb-4 group-hover:bg-blue-500/10 transition-colors">
+                  <div className="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-[var(--glass-bg)] text-blue-400 mb-4 group-hover:bg-blue-500/10 transition-colors">
                     <value.icon className="w-5 h-5" />
                   </div>
-                  <h4 className="text-lg font-semibold text-white mb-2">{value.title}</h4>
-                  <p className="text-sm text-slate-400">{value.description}</p>
+                  <h4 className="text-lg font-semibold text-[var(--text-primary)] mb-2">{value.title}</h4>
+                  <p className="text-sm text-[var(--text-secondary)]">{value.description}</p>
                 </CardContent>
               </Card>
             ))}

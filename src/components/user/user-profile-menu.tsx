@@ -95,10 +95,10 @@ export function UserProfileMenu() {
     <div className="relative">
       <button
         onClick={() => setOpen(!open)}
-        className="flex items-center gap-2 px-3 py-2 rounded-lg transition-colors hover:bg-white/5"
+        className="flex items-center gap-2 px-3 py-2 rounded-lg transition-colors hover:bg-[var(--glass-bg)]"
       >
         <div className="w-8 h-8 rounded-full bg-gradient-primary flex items-center justify-center">
-          <User className="w-4 h-4 text-white" />
+          <User className="w-4 h-4 text-[var(--text-primary)]" />
         </div>
         <ChevronDown className="w-4 h-4" style={{ color: "var(--text-muted)" }} />
       </button>
@@ -117,7 +117,7 @@ export function UserProfileMenu() {
             <div className="p-4 border-b" style={{ borderColor: "var(--glass-border)" }}>
               <div className="flex items-center gap-3">
                 <div className="w-12 h-12 rounded-full bg-gradient-primary flex items-center justify-center">
-                  <User className="w-6 h-6 text-white" />
+                  <User className="w-6 h-6 text-[var(--text-primary)]" />
                 </div>
                 <div>
                   <p className="font-semibold text-sm" style={{ color: "var(--text-primary)" }}>
@@ -146,7 +146,7 @@ export function UserProfileMenu() {
             <div className="py-2">
               <button
                 onClick={() => { router.push("/profile"); setOpen(false); }}
-                className="w-full flex items-center gap-3 px-4 py-2.5 text-sm transition-colors hover:bg-white/5"
+                className="w-full flex items-center gap-3 px-4 py-2.5 text-sm transition-colors hover:bg-[var(--glass-bg)]"
                 style={{ color: "var(--text-primary)" }}
               >
                 <User className="w-4 h-4" style={{ color: "var(--text-muted)" }} />
@@ -154,7 +154,7 @@ export function UserProfileMenu() {
               </button>
               <button
                 onClick={() => { router.push("/dashboard"); setOpen(false); }}
-                className="w-full flex items-center gap-3 px-4 py-2.5 text-sm transition-colors hover:bg-white/5"
+                className="w-full flex items-center gap-3 px-4 py-2.5 text-sm transition-colors hover:bg-[var(--glass-bg)]"
                 style={{ color: "var(--text-primary)" }}
               >
                 <Activity className="w-4 h-4" style={{ color: "var(--text-muted)" }} />
@@ -162,7 +162,7 @@ export function UserProfileMenu() {
               </button>
               <button
                 onClick={() => { router.push("/bookmarks"); setOpen(false); }}
-                className="w-full flex items-center gap-3 px-4 py-2.5 text-sm transition-colors hover:bg-white/5"
+                className="w-full flex items-center gap-3 px-4 py-2.5 text-sm transition-colors hover:bg-[var(--glass-bg)]"
                 style={{ color: "var(--text-primary)" }}
               >
                 <Bookmark className="w-4 h-4" style={{ color: "var(--text-muted)" }} />
@@ -170,7 +170,7 @@ export function UserProfileMenu() {
               </button>
               <button
                 onClick={() => { router.push("/history"); setOpen(false); }}
-                className="w-full flex items-center gap-3 px-4 py-2.5 text-sm transition-colors hover:bg-white/5"
+                className="w-full flex items-center gap-3 px-4 py-2.5 text-sm transition-colors hover:bg-[var(--glass-bg)]"
                 style={{ color: "var(--text-primary)" }}
               >
                 <History className="w-4 h-4" style={{ color: "var(--text-muted)" }} />
@@ -197,7 +197,7 @@ export function UserProfileMenu() {
                         key={t.value}
                         onClick={() => setTheme(t.value as "light" | "dim" | "dark")}
                         className={`flex-1 flex items-center justify-center gap-1.5 py-2 rounded-lg text-xs transition-all border ${
-                          isActive ? "border-primary/50" : "border-transparent hover:bg-white/5"
+                          isActive ? "border-primary/50" : "border-transparent hover:bg-[var(--glass-bg)]"
                         }`}
                         style={{
                           backgroundColor: isActive ? "var(--badge-bg)" : "transparent",
@@ -223,7 +223,7 @@ export function UserProfileMenu() {
                       key={loc.value}
                       onClick={() => setLocale(loc.value)}
                       className={`flex items-center gap-2 px-2 py-1.5 rounded-lg text-xs transition-colors ${
-                        locale === loc.value ? "bg-white/10" : "hover:bg-white/5"
+                        locale === loc.value ? "bg-[var(--glass-bg-hover)]" : "hover:bg-[var(--glass-bg)]"
                       }`}
                       style={{
                         color: locale === loc.value ? "var(--text-primary)" : "var(--text-muted)",
@@ -240,7 +240,7 @@ export function UserProfileMenu() {
 
               <button
                 onClick={() => { router.push("/settings"); setOpen(false); }}
-                className="w-full flex items-center gap-3 px-4 py-2.5 text-sm transition-colors hover:bg-white/5"
+                className="w-full flex items-center gap-3 px-4 py-2.5 text-sm transition-colors hover:bg-[var(--glass-bg)]"
                 style={{ color: "var(--text-primary)" }}
               >
                 <Settings className="w-4 h-4" style={{ color: "var(--text-muted)" }} />
@@ -248,7 +248,7 @@ export function UserProfileMenu() {
               </button>
               <button
                 onClick={() => { localStorage.clear(); window.location.reload(); }}
-                className="w-full flex items-center gap-3 px-4 py-2.5 text-sm transition-colors hover:bg-white/5"
+                className="w-full flex items-center gap-3 px-4 py-2.5 text-sm transition-colors hover:bg-[var(--glass-bg)]"
                 style={{ color: "var(--error)" }}
               >
                 <LogOut className="w-4 h-4" />
